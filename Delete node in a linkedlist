@@ -1,0 +1,37 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class SLL:
+    def __init__(self):
+        self.head = None
+
+    def deleteNode(self, node):
+        if node is None or node.next is None:
+            return  
+        node.data = node.next.data
+        node.next = node.next.next
+
+    def printList(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+l = SLL()
+n = Node(10)
+l.head = n
+n1 = Node(20)
+n.next = n1
+n2 = Node(30)
+n1.next = n2
+n3 = Node(40)
+n2.next = n3
+n4 = Node(50)
+n3.next = n4
+print("Original linked list:")
+l.printList()
+l.deleteNode(n2)
+print("After deleting the node with value 30:")
+l.printList()
