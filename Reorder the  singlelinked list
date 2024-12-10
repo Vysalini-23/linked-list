@@ -1,0 +1,60 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class SLL:
+    def __init__(self):
+        self.head = None
+
+    def reorderlist(self):
+        if not self.head or not self.head.next:  # Edge case: Empty list or single node
+            return
+
+        # Step 1: Find the middle of the linked list
+        slow, fast = self.head, self.head
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # Step 2: Reverse the second half of the list
+        second = slow.next
+        slow.next = None  # Split the list into two halves
+        prev = None
+        while second:
+            temp = second.next
+            second.next = prev
+            prev = second
+            second = temp
+
+        # Step 3: Merge the two halves
+        first, second = self.head, prev
+        while second:
+            t1, t2 = first.next, second.next
+            first.next = second
+            second.next = t1
+            first, second = t1, t2
+
+    def printList(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+# Creating the linked list
+l = SLL()
+n = Node(10)
+l.head = n
+n1 = Node(20)
+n.next = n1
+n2 = Node(30)
+n1.next = n2
+n3 = Node(40)
+n2.next = n3
+n4 = Node(50)
+n3.next = n4
+print("Original linked list:")
+l.printList()
+# Reorder the list
+l.reorderlist()
+print("After reorder the list:")
+l.printList()
