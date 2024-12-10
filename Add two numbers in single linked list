@@ -1,0 +1,60 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class SLL:
+    def __init__(self):
+        self.head = None
+
+    def addtwonumbers(self, l1, l2):
+        carry = 0
+        result = Node(0)  # Dummy head
+        cur = result
+       # Process both lists
+        while l1 or l2:
+            val = carry
+            if l1:
+                val += l1.data
+                l1 = l1.next
+            if l2:
+                val += l2.data
+                l2 = l2.next
+
+            carry = val // 10  # Calculate carry
+            cur.next = Node(val % 10)  # Create new node with current digit
+            cur = cur.next
+
+        # If there's a leftover carry, add a new node
+        if carry:
+            cur.next = Node(carry)
+
+        return result.next
+
+    def printList(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+# Creating the first linked list
+l1 = SLL()
+l1.head = Node(9)
+l1.head.next = Node(8)
+l1.head.next.next = Node(9)
+l1.head.next.next.next = Node(9)
+# Creating the second linked list
+l2 = SLL()
+l2.head = Node(2)
+l2.head.next = Node(3)
+# Adding the two linked lists
+result_list = SLL()
+result_list.head = result_list.addtwonumbers(l1.head, l2.head)
+print( "The data in l1 is")
+l1.printList()
+print("The data in L2 is")
+l2.printList()
+# Printing the result
+print("Resultant linked list:")
+result_list.printList()
+
