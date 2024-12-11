@@ -1,0 +1,8 @@
+nums=list(map(int,input().split()))
+k=int(input())
+n=len(nums)
+rotate_array=[0]*n
+for i in range(n):
+    rotate_array[(i+k)%n]=nums[i]
+nums[:]=rotate_array[:]
+print("After rotate the array is:",rotate_array)
