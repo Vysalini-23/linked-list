@@ -1,0 +1,9 @@
+nums=[int(x) for x in input().split()]
+target=int(input())
+i=0
+dictionary={}
+for i in range(len(nums)):
+    if nums[i] in dictionary:
+        print([dictionary[nums[i]],i])
+    else:
+        dictionary[target-nums[i]]=i
