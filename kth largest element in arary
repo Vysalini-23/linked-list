@@ -1,0 +1,9 @@
+arr=[int(x)for x in input().split()]
+n = int(input("Enter the position of the largest element you want "))
+arr=list(set(arr))
+arr.sort()
+if len(arr)>1:
+    print(f"The {n}_th largest element is: {arr[-n]}")
+
+else:
+    print(f"The list has only {len(arr)} unique elements. Cannot find the {n}-th largest.")
