@@ -1,0 +1,33 @@
+arr=[int(x)for x in input().split()]
+arr=list(set(arr))
+arr.sort()
+if len(arr)>1:
+    print(arr[-2])
+else:
+    print(arr[-1])
+
+    (or)
+
+arr=[int(x)for x in input().split()]
+n = len(arr) 
+if n < 2:
+    print("There is no second largest element.")
+else:
+ # Initialize variables for the largest and second largest elements
+    largest = 0
+    res = -1
+
+  # Find the largest element's index
+    for i in range(n):
+        if arr[i] > arr[largest]:
+            largest = i
+# Find the second largest element's index
+    for i in range(n):
+        if arr[i] != arr[largest]:  # Exclude the largest element
+            if res == -1 or arr[i] > arr[res]:
+                res = i
+
+    if res != -1:
+        print(f"The second largest element is: {arr[res]}")
+    else:
+        print("All elements in the array are the same. No second largest element.")
