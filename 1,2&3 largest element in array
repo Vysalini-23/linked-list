@@ -1,0 +1,24 @@
+arr=[int(x)for x in input().split()]
+n=len(arr)
+if n<1:
+    print("There is no second element")
+else:
+    lar=0
+    res=-1
+    pos=-2
+    for i in range(n):
+        if arr[i]>arr[lar]:
+            lar=i
+    for i in range(n):
+        if arr[i]!=arr[lar]:
+            if res==-1 or arr[i]>arr[res]:
+                res=i
+    for i in range(n):
+        if arr[i]!=arr[lar] and arr[i]!=arr[res]:
+            if pos==-2 or arr[i]>arr[pos]:
+                pos=i
+        if res!=-1:
+            pass
+    print("Third largest is",arr[pos])
+    print("Second largest is",arr[res])
+    print("First largest is",arr[lar])
