@@ -1,0 +1,19 @@
+arr = [int(x) for x in input("Enter numbers: ").split()]
+
+# Create an empty dictionary to count occurrences of elements
+frequency = {}
+
+# Count occurrences of each element
+for num in arr:
+    if num in frequency:
+        frequency[num] += 1
+    else:
+        frequency[num] = 1
+
+# Check if there are duplicates
+duplicates = [key for key, value in frequency.items() if value > 1]
+
+if duplicates:
+    print("Duplicate elements are:", duplicates)
+else:
+    print("There is no duplicate element.")
