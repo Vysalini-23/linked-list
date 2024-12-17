@@ -1,0 +1,28 @@
+arr = [int(x) for x in input("Enter numbers: ").split()]
+n = len(arr)
+
+if n < 3:
+    print("There are not enough unique elements to determine first, second, and third smallest.")
+else:
+    # Initialize smallest, second smallest, and third smallest
+    sma = float('inf')
+    sec = float('inf')
+    third = float('inf')
+    
+    for num in arr:
+        if num < sma:
+            third = sec  # Update third smallest
+            sec = sma    # Update second smallest
+            sma = num    # Update smallest
+        elif num != sma and num < sec:  # Ensure it's unique and less than second
+            third = sec  # Update third smallest
+            sec = num    # Update second smallest
+        elif num != sma and num != sec and num < third:  # Unique and less than third
+            third = num
+    
+    if third == float('inf'):
+        print("There are not enough unique elements to determine all three smallest.")
+    else:
+        print("First smallest is:", sma)
+        print("Second smallest is:", sec)
+        print("Third smallest is:", third)
